@@ -15,6 +15,7 @@ b) Implemente los siguientes métodos:
  */
 package parcial3;
 
+import PaqueteLectura.GeneradorAleatorio;
 /**
  *
  * @author Martin
@@ -26,25 +27,19 @@ public class Parcial3 {
      */
     public static void main(String[] args) {
         Estanteria nuevoEstante = new Estanteria(7,3);
+        GeneradorAleatorio.iniciar();
         
-        Libros libro1 = new Libros("f","pepe",526.2);
-        Libros libro2 = new Libros("a","pepe2",522.2);
-        Libros libro3 = new Libros("s","pepe3",516.2);
-        Libros libro4 = new Libros("c","pepe4",596.2);
-        Libros libro5 = new Libros("f","pepe5",546.2);
-        Libros libro6 = new Libros("g","pepe6",545.2);
-        Libros libro7 = new Libros("d","pepe7",599.2);
+        for (int i = 0; i < 7; i++) {
+            for (int j = 0; j < 3; j++) {
+                Libros libro1 = new Libros(GeneradorAleatorio.generarString(6),GeneradorAleatorio.generarString(8),GeneradorAleatorio.generarDouble(800)+100.0);
+                nuevoEstante.almacenarLibro(libro1, i, j);
+            }
+            
+        }
+       
         
-        nuevoEstante.almacenarLibro(libro1, 0, 0);
-        nuevoEstante.almacenarLibro(libro2, 0, 1);
-        nuevoEstante.almacenarLibro(libro3, 0, 2);
-        nuevoEstante.almacenarLibro(libro4, 2, 0);
-        nuevoEstante.almacenarLibro(libro5, 1, 1);
-        nuevoEstante.almacenarLibro(libro6, 2, 1);
-        nuevoEstante.almacenarLibro(libro7, 4, 1);
-        
-        System.out.println(nuevoEstante.sacarLibro("d", 7, 3).toString());
-        System.out.println(nuevoEstante.calcular(7, 3).getTitulo());
+        System.out.println(nuevoEstante.sacarLibro("d").toString());
+        System.out.println(nuevoEstante.calcular().getTitulo());
         
 
         
